@@ -1,0 +1,1 @@
+The functionality of this slider is not so complicated as to write a description for it :)
