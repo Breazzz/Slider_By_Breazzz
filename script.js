@@ -11,14 +11,14 @@ $(document).ready(function(){
 	const itemWidth = container.width() / slidesToShow;
 	const movePosition = slidesToScroll * itemWidth;
 
-	// Ширина слайдов
+	// Width slides
 	item.each(function(index, item){
 		$(item).css({
 			minWidth: itemWidth,
 		})
 	});
 
-	// Кнопки
+	// Btns
 	btnPrev.click(function(){
 		const itemsLeft = Math.abs(position) / itemWidth;
 		position += itemsLeft >= slidesToScroll ? movePosition : itemsLeft * itemWidth;
@@ -34,14 +34,14 @@ $(document).ready(function(){
 		checkBtns();
 	});
 
-	// Расчёт позиции
+	// Check position
 	const setPosition = () => {
 		truck.css({
 			transform: `translateX(${position}px)`
 		});
 	}
 
-	// Проверка активности кнопок
+	// Check active button
 	const checkBtns = () => {
 		btnPrev.prop('disabled', position === 0);
 		btnNext.prop(
