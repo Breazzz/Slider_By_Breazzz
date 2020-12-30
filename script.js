@@ -11,44 +11,44 @@ $(document).ready(function () {
     const itemWidth = container.width() / slidesToShow;
     const movePosition = slidesToScroll * itemWidth;
 
-    // Ширина слайдов
-    item.each(function (index, item) {
-        $(item).css({
-            minWidth: itemWidth,
-        })
-    });
+	// Width slides
+	item.each(function(index, item){
+		$(item).css({
+			minWidth: itemWidth,
+		})
+	});
 
-    // Кнопки
-    btnPrev.click(function () {
-        const itemsLeft = Math.abs(position) / itemWidth;
-        position += itemsLeft >= slidesToScroll ? movePosition : itemsLeft * itemWidth;
-        console.log(position)
-        setPosition();
-        checkBtns();
-    });
-    btnNext.click(function () {
-        const itemsLeft = itemsCount - (Math.abs(position) + slidesToShow * itemWidth) / itemWidth;
-        position -= itemsLeft >= slidesToScroll ? movePosition : itemsLeft * itemWidth;
-        console.log(position)
-        setPosition();
-        checkBtns();
-    });
+	// Btns
+	btnPrev.click(function(){
+		const itemsLeft = Math.abs(position) / itemWidth;
+		position += itemsLeft >= slidesToScroll ? movePosition : itemsLeft * itemWidth;
+		console.log(position)
+		setPosition();
+		checkBtns();
+	});
+	btnNext.click(function(){
+		const itemsLeft = itemsCount - (Math.abs(position) + slidesToShow * itemWidth) / itemWidth;
+		position -= itemsLeft >= slidesToScroll ? movePosition : itemsLeft * itemWidth;
+		console.log(position)
+		setPosition();
+		checkBtns();
+	});
 
-    // Расчёт позиции
-    const setPosition = () => {
-        truck.css({
-            transform: `translateX(${position}px)`
-        });
-    }
+	// Check position
+	const setPosition = () => {
+		truck.css({
+			transform: `translateX(${position}px)`
+		});
+	}
 
-    // Проверка активности кнопок
-    const checkBtns = () => {
-        btnPrev.prop('disabled', position === 0);
-        btnNext.prop(
-            'disabled',
-            position <= -(itemsCount - slidesToShow) * itemWidth
-        );
-    }
+	// Check active button
+	const checkBtns = () => {
+		btnPrev.prop('disabled', position === 0);
+		btnNext.prop(
+			'disabled',
+			position <= -(itemsCount - slidesToShow) * itemWidth
+		);
+	} 
 
-    checkBtns();
+	checkBtns();
 });
